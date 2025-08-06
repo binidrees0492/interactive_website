@@ -1,0 +1,1124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXHAN IT Globbe  Automation - Industrial Automation Solutions</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://i.imgur.com/1A1i8Qc.png">
+
+    <!-- Custom Styles -->
+    <style>
+        /* Custom animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeOut {
+            from { opacity: 1; transform: translateY(0); }
+            to { opacity: 0; transform: translateY(-20px); }
+        }
+
+        @keyframes fadeInLeft {
+            from { opacity: 0; transform: translateX(-50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+
+        @keyframes pulse-glow {
+            0% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.7); }
+            70% { box-shadow: 0 0 0 10px rgba(59, 130, 246, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(59, 130, 246, 0); }
+        }
+
+        .fade-in {
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+
+        .fade-out {
+            animation: fadeOut 0.8s ease-out forwards;
+        }
+
+        .fade-in-left {
+            animation: fadeInLeft 0.8s ease-out forwards;
+        }
+
+        .fade-in-right {
+            animation: fadeInRight 0.8s ease-out forwards;
+        }
+
+        .fade-in-up {
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .fade-in-down {
+            animation: fadeInDown 0.8s ease-out forwards;
+        }
+
+        .float-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .pulse-glow {
+            animation: pulse-glow 2s infinite;
+        }
+
+        .gradient-text {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-bg {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+        }
+
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+
+        .card-hover:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: #1e293b;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #3b82f6;
+            border-radius: 5px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #2563eb;
+        }
+
+        /* Initial state for fade animations */
+        .fade-element {
+            opacity: 0;
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-element.visible {
+            opacity: 1;
+        }
+
+        .fade-element-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-element-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-element-right {
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-element-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .fade-element-up {
+            opacity: 0;
+            transform: translateY(50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-element-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .fade-element-down {
+            opacity: 0;
+            transform: translateY(-50px);
+            transition: all 0.8s ease-out;
+        }
+
+        .fade-element-down.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Parallax effect */
+        .parallax {
+            background-attachment: fixed;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        /* Testimonial styles */
+        .testimonial-card {
+            position: relative;
+            background: rgba(30, 41, 59, 0.7);
+            backdrop-filter: blur(10px);
+        }
+
+        .testimonial-card::before {
+            content: """;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            font-size: 120px;
+            color: rgba(59, 130, 246, 0.2);
+            font-family: serif;
+        }
+
+        /* Timeline styles */
+        .timeline-item {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .timeline-item::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 5px;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: #3b82f6;
+        }
+
+        .timeline-item::after {
+            content: "";
+            position: absolute;
+            left: 7px;
+            top: 25px;
+            width: 2px;
+            height: calc(100% + 20px);
+            background: #3b82f6;
+        }
+
+        .timeline-item:last-child::after {
+            display: none;
+        }
+
+        /* Counter styles */
+        .counter {
+            display: inline-block;
+            width: auto;
+        }
+
+        /* Section visibility */
+        .section {
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+        }
+
+        .section.always-visible {
+            display: block;
+        }
+
+        /* Active nav link */
+        .nav-link.active {
+            color: #3b82f6;
+        }
+
+        /* Home section special handling */
+        #home {
+            display: block;
+        }
+
+        #home.hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+<!-- Navigation -->
+<nav class="fixed w-full bg-gray-900/90 backdrop-blur-md z-50 border-b border-gray-800">
+    <div class="container mx-auto px-4 py-3">
+        <div class="flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img src="https://i.imgur.com/1A1i8Qc.png" alt="AXHAN IT Globbe  Automation" class="w-10 h-10">
+                <span class="text-xl font-bold">AXHAN IT Globbe  Automation</span>
+            </div>
+
+            <div class="hidden md:flex space-x-8">
+                <a href="#home" class="nav-link hover:text-blue-400 transition active">Home</a>
+                <a href="#features" class="nav-link hover:text-blue-400 transition">Features</a>
+                <a href="#about" class="nav-link hover:text-blue-400 transition">About</a>
+                <a href="#services" class="nav-link hover:text-blue-400 transition">Services</a>
+                <a href="#industries" class="nav-link hover:text-blue-400 transition">Industries</a>
+                <a href="#testimonials" class="nav-link hover:text-blue-400 transition">Testimonials</a>
+                <a href="#team" class="nav-link hover:text-blue-400 transition">Team</a>
+                <a href="#contact" class="nav-link hover:text-blue-400 transition">Contact</a>
+            </div>
+
+            <button class="md:hidden text-white" id="mobile-menu-btn">
+                <i class="fas fa-bars text-2xl"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div class="hidden md:hidden mt-4 pb-4" id="mobile-menu">
+            <a href="#home" class="mobile-nav-link block py-2 hover:text-blue-400 transition active">Home</a>
+            <a href="#features" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Features</a>
+            <a href="#about" class="mobile-nav-link block py-2 hover:text-blue-400 transition">About</a>
+            <a href="#services" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Services</a>
+            <a href="#industries" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Industries</a>
+            <a href="#testimonials" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Testimonials</a>
+            <a href="#team" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Team</a>
+            <a href="#contact" class="mobile-nav-link block py-2 hover:text-blue-400 transition">Contact</a>
+        </div>
+    </div>
+</nav>
+
+<!-- Home Section -->
+<section id="home" class="hero-bg min-h-screen flex items-center pt-16">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-element-left">
+                <h1 class="text-5xl md:text-6xl font-bold mb-6">
+                    Transforming <span class="gradient-text">Industries</span> with Automation
+                </h1>
+                <p class="text-xl text-gray-300 mb-8">
+                    Leading provider of innovative automation solutions that enhance efficiency, productivity, and safety across industrial sectors.
+                </p>
+                <div class="flex flex-wrap gap-4">
+                    <button class="bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition pulse-glow">
+                        Get Started
+                    </button>
+                    <button class="border border-blue-500 hover:bg-blue-500/20 px-8 py-3 rounded-lg font-semibold transition">
+                        Learn More
+                    </button>
+                </div>
+            </div>
+
+            <div class="relative fade-element-right">
+                <div class="float-animation">
+                    <img src="https://images.unsplash.com/photo-1581094794329-c8112a89af12?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                         alt="Automation"
+                         class="rounded-2xl shadow-2xl">
+                </div>
+                <div class="absolute -bottom-6 -left-6 w-32 h-32 bg-blue-500 rounded-full opacity-20 blur-3xl"></div>
+                <div class="absolute -top-6 -right-6 w-40 h-40 bg-purple-500 rounded-full opacity-20 blur-3xl"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section id="features" class="section py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Why Choose <span class="gradient-text">AXHAN IT Globbe  Automation</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                We deliver cutting-edge automation solutions tailored to your specific industrial needs
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-left">
+                <div class="w-16 h-16 bg-blue-500/20 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-robot text-blue-500 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Advanced Robotics</h3>
+                <p class="text-gray-400">
+                    State-of-the-art robotic systems designed for precision, reliability, and seamless integration.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-up">
+                <div class="w-16 h-16 bg-purple-500/20 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-brain text-purple-500 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">AI Integration</h3>
+                <p class="text-gray-400">
+                    Harness the power of artificial intelligence to optimize processes and predict maintenance needs.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-right">
+                <div class="w-16 h-16 bg-green-500/20 rounded-lg flex items-center justify-center mb-6">
+                    <i class="fas fa-shield-alt text-green-500 text-2xl"></i>
+                </div>
+                <h3 class="text-2xl font-bold mb-4">Safety First</h3>
+                <p class="text-gray-400">
+                    Comprehensive safety systems that protect both equipment and personnel in all operating conditions.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="section py-20">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">About <span class="gradient-text">AXHAN IT Globbe  Automation</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Learn more about our company and achievements
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div class="fade-element-left">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                     alt="About Us"
+                     class="rounded-2xl shadow-2xl">
+            </div>
+
+            <div class="fade-element-right">
+                <p class="text-gray-300 mb-6">
+                    With over 15 years of experience in industrial automation, we've helped hundreds of companies transform their operations through innovative technology solutions.
+                </p>
+                <p class="text-gray-300 mb-8">
+                    Our team of expert engineers and technicians work closely with clients to understand their unique challenges and deliver customized automation systems that drive measurable results.
+                </p>
+
+                <div class="grid grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-3xl font-bold text-blue-500">
+                            <span class="counter" data-target="500">0</span>+
+                        </h3>
+                        <p class="text-gray-400">Projects Completed</p>
+                    </div>
+                    <div>
+                        <h3 class="text-3xl font-bold text-purple-500">
+                            <span class="counter" data-target="98">0</span>%
+                        </h3>
+                        <p class="text-gray-400">Client Satisfaction</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="section py-20 bg-gray-800">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Our <span class="gradient-text">Services</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Comprehensive automation solutions designed for modern industries
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-left">
+                <i class="fas fa-industry text-4xl text-blue-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Process Automation</h3>
+                <p class="text-gray-400">
+                    Streamline manufacturing processes with our advanced control systems and automation technologies.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-up">
+                <i class="fas fa-cogs text-4xl text-purple-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Machine Integration</h3>
+                <p class="text-gray-400">
+                    Seamlessly connect your machinery with IoT platforms for real-time monitoring and control.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-right">
+                <i class="fas fa-chart-line text-4xl text-green-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Data Analytics</h3>
+                <p class="text-gray-400">
+                    Transform operational data into actionable insights with our advanced analytics platform.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-left">
+                <i class="fas fa-tools text-4xl text-yellow-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Maintenance Solutions</h3>
+                <p class="text-gray-400">
+                    Predictive maintenance systems that minimize downtime and extend equipment lifespan.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-up">
+                <i class="fas fa-graduation-cap text-4xl text-red-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">Training Programs</h3>
+                <p class="text-gray-400">
+                    Comprehensive training for your team to maximize the benefits of automation systems.
+                </p>
+            </div>
+
+            <div class="bg-gray-900 p-8 rounded-xl card-hover fade-element-right">
+                <i class="fas fa-headset text-4xl text-cyan-500 mb-4"></i>
+                <h3 class="text-2xl font-bold mb-4">24/7 Support</h3>
+                <p class="text-gray-400">
+                    Round-the-clock technical support to ensure your systems operate at peak performance.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Industries Section -->
+<section id="industries" class="section py-20">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Industries We <span class="gradient-text">Serve</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Providing specialized automation solutions across multiple industry sectors
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-left">
+                <div class="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-car text-blue-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Automotive</h3>
+                <p class="text-gray-400 text-sm">
+                    Precision automation for manufacturing and assembly lines
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-up">
+                <div class="w-12 h-12 bg-purple-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-pills text-purple-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Pharmaceutical</h3>
+                <p class="text-gray-400 text-sm">
+                    Compliant automation for drug production and packaging
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-up">
+                <div class="w-12 h-12 bg-green-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-utensils text-green-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Food & Beverage</h3>
+                <p class="text-gray-400 text-sm">
+                    Hygienic automation for processing and packaging
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-right">
+                <div class="w-12 h-12 bg-yellow-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-box text-yellow-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Logistics</h3>
+                <p class="text-gray-400 text-sm">
+                    Efficient automation for warehousing and distribution
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-left">
+                <div class="w-12 h-12 bg-red-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-microchip text-red-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Electronics</h3>
+                <p class="text-gray-400 text-sm">
+                    Precision automation for component manufacturing
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-up">
+                <div class="w-12 h-12 bg-cyan-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-bolt text-cyan-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Energy</h3>
+                <p class="text-gray-400 text-sm">
+                    Robust automation for power generation and distribution
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-up">
+                <div class="w-12 h-12 bg-indigo-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-flask text-indigo-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Chemical</h3>
+                <p class="text-gray-400 text-sm">
+                    Safe automation for chemical processing and handling
+                </p>
+            </div>
+
+            <div class="bg-gray-800 p-6 rounded-xl card-hover fade-element-right">
+                <div class="w-12 h-12 bg-pink-500/20 rounded-lg flex items-center justify-center mb-4">
+                    <i class="fas fa-tshirt text-pink-500 text-xl"></i>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Textile</h3>
+                <p class="text-gray-400 text-sm">
+                    Efficient automation for fabric production and processing
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section id="testimonials" class="section py-20 bg-gray-800 parallax" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Client <span class="gradient-text">Testimonials</span></h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Hear from our satisfied clients about their experience with our automation solutions
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-8">
+            <div class="testimonial-card p-8 rounded-xl fade-element-left">
+                <p class="text-gray-300 mb-6 relative z-10">
+                    AXHAN IT Globbe  Automation transformed our manufacturing process, increasing efficiency by 40% and reducing errors to near zero. Their team is professional, knowledgeable, and truly understands our industry needs.
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">Michael Johnson</h4>
+                        <p class="text-gray-400 text-sm">CEO, TechManufacturing</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card p-8 rounded-xl fade-element-up">
+                <p class="text-gray-300 mb-6 relative z-10">
+                    The AI integration solution provided by AXHAN IT Globbe  Automation has revolutionized our predictive maintenance. We've reduced downtime by 65% and saved millions in potential repair costs.
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">Sarah Williams</h4>
+                        <p class="text-gray-400 text-sm">Operations Director, AutoParts Inc</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="testimonial-card p-8 rounded-xl fade-element-right">
+                <p class="text-gray-300 mb-6 relative z-10">
+                    Working with AXHAN IT Globbe  Automation has been a game-changer for our pharmaceutical production line. Their attention to detail and compliance with industry standards is unmatched.
+                </p>
+                <div class="flex items-center">
+                    <img src="https://randomuser.me/api/portraits/men/67.jpg" alt="Client" class="w-12 h-12 rounded-full mr-4">
+                    <div>
+                        <h4 class="font-bold">David Chen</h4>
+                        <p class="text-gray-400 text-sm">Production Manager, MedTech Pharma</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section id="team" class="section py-20">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Our <span class="gradient-text">Leadership Team</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Meet the experts behind our innovative automation solutions
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-4 gap-8">
+            <div class="text-center fade-element-left">
+                <img src="https://randomuser.me/api/portraits/men/43.jpg" alt="Team Member" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold mb-1">Robert Anderson</h3>
+                <p class="text-blue-400 mb-3">CEO & Founder</p>
+                <p class="text-gray-400 text-sm mb-4">
+                    20+ years in automation engineering with a passion for innovative solutions
+                </p>
+                <div class="flex justify-center space-x-3">
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center fade-element-up">
+                <img src="https://randomuser.me/api/portraits/women/28.jpg" alt="Team Member" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold mb-1">Jennifer Martinez</h3>
+                <p class="text-purple-400 mb-3">CTO</p>
+                <p class="text-gray-400 text-sm mb-4">
+                    AI and robotics specialist with multiple patents in automation technology
+                </p>
+                <div class="flex justify-center space-x-3">
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center fade-element-up">
+                <img src="https://randomuser.me/api/portraits/men/36.jpg" alt="Team Member" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold mb-1">James Wilson</h3>
+                <p class="text-green-400 mb-3">COO</p>
+                <p class="text-gray-400 text-sm mb-4">
+                    Operations expert with a track record of scaling automation solutions globally
+                </p>
+                <div class="flex justify-center space-x-3">
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="text-center fade-element-right">
+                <img src="https://randomuser.me/api/portraits/women/63.jpg" alt="Team Member" class="w-48 h-48 rounded-full mx-auto mb-4 object-cover">
+                <h3 class="text-xl font-bold mb-1">Lisa Thompson</h3>
+                <p class="text-yellow-400 mb-3">CFO</p>
+                <p class="text-gray-400 text-sm mb-4">
+                    Financial strategist with expertise in funding technology innovation
+                </p>
+                <div class="flex justify-center space-x-3">
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-linkedin-in text-sm"></i>
+                    </a>
+                    <a href="#" class="w-8 h-8 bg-gray-800 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                        <i class="fab fa-twitter text-sm"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Company Timeline Section (part of Team) -->
+<section class="py-20 bg-gray-800 section" id="timeline">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Our <span class="gradient-text">Journey</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Key milestones in our mission to revolutionize industrial automation
+            </p>
+        </div>
+
+        <div class="max-w-4xl mx-auto">
+            <div class="timeline-item mb-8 fade-element-left">
+                <h3 class="text-xl font-bold mb-2">2008 - Company Founded</h3>
+                <p class="text-gray-400">
+                    AXHAN IT Globbe  Automation was established with a vision to bring cutting-edge automation solutions to industrial manufacturers.
+                </p>
+            </div>
+
+            <div class="timeline-item mb-8 fade-element-right">
+                <h3 class="text-xl font-bold mb-2">2012 - First Major Breakthrough</h3>
+                <p class="text-gray-400">
+                    Launched our proprietary AI-driven predictive maintenance system, reducing downtime by 50% for early clients.
+                </p>
+            </div>
+
+            <div class="timeline-item mb-8 fade-element-left">
+                <h3 class="text-xl font-bold mb-2">2016 - International Expansion</h3>
+                <p class="text-gray-400">
+                    Opened offices in Europe and Asia, bringing our automation solutions to a global market.
+                </p>
+            </div>
+
+            <div class="timeline-item mb-8 fade-element-right">
+                <h3 class="text-xl font-bold mb-2">2020 - Innovation Award</h3>
+                <p class="text-gray-400">
+                    Received the Global Automation Innovation Award for our collaborative robotics platform.
+                </p>
+            </div>
+
+            <div class="timeline-item fade-element-left">
+                <h3 class="text-xl font-bold mb-2">2023 - <span class="counter" data-target="500">0</span>+ Projects Completed</h3>
+                <p class="text-gray-400">
+                    Reached a major milestone with over 500 successful automation projects across 20+ industries.
+                </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="section always-visible py-20">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-16 fade-element-down">
+            <h2 class="text-4xl font-bold mb-4">Get In <span class="gradient-text">Touch</span></h2>
+            <p class="text-xl text-gray-400 max-w-3xl mx-auto">
+                Ready to transform your operations? Contact us today for a consultation.
+            </p>
+        </div>
+
+        <div class="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+            <div class="fade-element-left">
+                <form class="space-y-6">
+                    <div>
+                        <label class="block text-gray-300 mb-2">Name</label>
+                        <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-300 mb-2">Email</label>
+                        <input type="email" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-300 mb-2">Company</label>
+                        <input type="text" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-300 mb-2">Service Interest</label>
+                        <select class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition">
+                            <option value="">Select a service</option>
+                            <option value="process-automation">Process Automation</option>
+                            <option value="machine-integration">Machine Integration</option>
+                            <option value="data-analytics">Data Analytics</option>
+                            <option value="maintenance">Maintenance Solutions</option>
+                            <option value="training">Training Programs</option>
+                            <option value="support">24/7 Support</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-gray-300 mb-2">Message</label>
+                        <textarea rows="4" class="w-full bg-gray-800 border border-gray-700 rounded-lg px-4 py-3 focus:outline-none focus:border-blue-500 transition"></textarea>
+                    </div>
+
+                    <button type="submit" class="w-full bg-blue-600 hover:bg-blue-700 px-8 py-3 rounded-lg font-semibold transition">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+
+            <div class="fade-element-right">
+                <div class="bg-gray-800 p-8 rounded-xl h-full">
+                    <h3 class="text-2xl font-bold mb-6">Contact Information</h3>
+
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <i class="fas fa-map-marker-alt text-blue-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Headquarters</h4>
+                                <p class="text-gray-400">123 Industrial Ave, Tech City, TC 12345</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-phone text-blue-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Phone</h4>
+                                <p class="text-gray-400">+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-envelope text-blue-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Email</h4>
+                                <p class="text-gray-400">info@AXHAN IT Globbe automation.com</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start">
+                            <i class="fas fa-clock text-blue-500 text-xl mt-1 mr-4"></i>
+                            <div>
+                                <h4 class="font-semibold mb-1">Business Hours</h4>
+                                <p class="text-gray-400">Monday - Friday: 9:00 AM - 6:00 PM</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8">
+                        <h4 class="font-semibold mb-4">Follow Us</h4>
+                        <div class="flex space-x-4">
+                            <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" class="w-10 h-10 bg-gray-700 hover:bg-blue-600 rounded-full flex items-center justify-center transition">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-20 bg-gradient-to-r from-blue-600 to-purple-600 section always-visible" id="cta">
+    <div class="container mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-6 fade-element-down">Ready to <span class="text-white">Transform</span> Your Business?</h2>
+        <p class="text-xl text-blue-100 max-w-3xl mx-auto mb-8 fade-element-up">
+            Join <span class="counter" data-target="250">0</span>+ companies that have revolutionized their operations with our automation solutions.
+        </p>
+        <div class="flex flex-wrap justify-center gap-4 fade-element-up">
+            <button class="bg-white text-blue-600 hover:bg-gray-100 px-8 py-3 rounded-lg font-semibold transition">
+                Schedule a Demo
+            </button>
+            <button class="border border-white hover:bg-white/20 px-8 py-3 rounded-lg font-semibold transition">
+                Contact Sales
+            </button>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="bg-gray-900 border-t border-gray-800 py-12">
+    <div class="container mx-auto px-4">
+        <div class="grid md:grid-cols-4 gap-8 mb-8">
+            <div>
+                <div class="flex items-center space-x-2 mb-4">
+                    <img src="https://i.imgur.com/1A1i8Qc.png" alt="AXHAN IT Globbe  Automation" class="w-8 h-8">
+                    <span class="text-lg font-bold">AXHAN IT Globbe  Automation</span>
+                </div>
+                <p class="text-gray-400">
+                    Leading provider of innovative automation solutions for industries worldwide.
+                </p>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                <ul class="space-y-2">
+                    <li><a href="#home" class="nav-link text-gray-400 hover:text-blue-400 transition">Home</a></li>
+                    <li><a href="#about" class="nav-link text-gray-400 hover:text-blue-400 transition">About Us</a></li>
+                    <li><a href="#services" class="nav-link text-gray-400 hover:text-blue-400 transition">Services</a></li>
+                    <li><a href="#industries" class="nav-link text-gray-400 hover:text-blue-400 transition">Industries</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-4">Resources</h3>
+                <ul class="space-y-2">
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Blog</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Case Studies</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">Whitepapers</a></li>
+                    <li><a href="#" class="text-gray-400 hover:text-blue-400 transition">FAQ</a></li>
+                </ul>
+            </div>
+
+            <div>
+                <h3 class="text-lg font-bold mb-4">Newsletter</h3>
+                <p class="text-gray-400 mb-4">
+                    Subscribe to our newsletter for the latest updates and insights.
+                </p>
+                <form class="flex">
+                    <input type="email" placeholder="Your email" class="bg-gray-800 border border-gray-700 rounded-l-lg px-4 py-2 focus:outline-none focus:border-blue-500 transition flex-grow">
+                    <button type="submit" class="bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-r-lg transition">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <div class="text-gray-400 mb-4 md:mb-0">
+                <p>&copy; 2023 AXHAN IT Globbe  Automation. All rights reserved.</p>
+            </div>
+
+            <div class="flex space-x-6">
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">Privacy Policy</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">Terms of Service</a>
+                <a href="#" class="text-gray-400 hover:text-blue-400 transition">Sitemap</a>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<script>
+    // Mobile menu toggle
+    const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    mobileMenuBtn.addEventListener('click', () => {
+        mobileMenu.classList.toggle('hidden');
+    });
+
+    // Section navigation
+    function showSection(sectionId) {
+        // Hide all sections except always-visible ones
+        document.querySelectorAll('.section:not(.always-visible)').forEach(section => {
+            section.classList.remove('active');
+        });
+
+        // Hide home section if not showing home
+        const homeSection = document.getElementById('home');
+        if (sectionId !== 'home' && homeSection) {
+            homeSection.classList.add('hidden');
+        } else if (sectionId === 'home' && homeSection) {
+            homeSection.classList.remove('hidden');
+        }
+
+        // Show selected section if it's not always-visible
+        const selectedSection = document.getElementById(sectionId);
+        if (selectedSection && !selectedSection.classList.contains('always-visible')) {
+            selectedSection.classList.add('active');
+
+            // Scroll to top of the page
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
+
+        // Update active nav link
+        document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === `#${sectionId}`) {
+                link.classList.add('active');
+            }
+        });
+
+        // Trigger animations for the newly visible section
+        if (selectedSection && !selectedSection.classList.contains('always-visible')) {
+            triggerAnimations(selectedSection);
+        }
+    }
+
+    // Trigger animations for elements in a section
+    function triggerAnimations(section) {
+        // Reset animation states
+        section.querySelectorAll('.fade-element, .fade-element-left, .fade-element-right, .fade-element-up, .fade-element-down').forEach(el => {
+            el.classList.remove('visible');
+        });
+
+        // Trigger animations with a small delay
+        setTimeout(() => {
+            section.querySelectorAll('.fade-element').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            section.querySelectorAll('.fade-element-left').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            section.querySelectorAll('.fade-element-right').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            section.querySelectorAll('.fade-element-up').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            section.querySelectorAll('.fade-element-down').forEach(el => {
+                el.classList.add('visible');
+            });
+
+            // Trigger counter animations
+            section.querySelectorAll('.counter').forEach(counter => {
+                if (!counter.classList.contains('counted')) {
+                    const target = parseInt(counter.getAttribute('data-target'));
+                    animateCounter(counter, target);
+                    counter.classList.add('counted');
+                }
+            });
+        }, 100);
+    }
+
+    // Counter animation function
+    function animateCounter(counterElement, target, duration = 2000) {
+        const start = 0;
+        const increment = target / (duration / 16);
+        let current = start;
+
+        const updateCounter = () => {
+            current += increment;
+            if (current < target) {
+                counterElement.textContent = Math.floor(current);
+                requestAnimationFrame(updateCounter);
+            } else {
+                counterElement.textContent = target;
+            }
+        };
+
+        updateCounter();
+    }
+
+    // Add click event listeners to navigation links
+    document.querySelectorAll('.nav-link, .mobile-nav-link').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1); // Remove the # character
+            showSection(targetId);
+
+            // Close mobile menu if open
+            mobileMenu.classList.add('hidden');
+        });
+    });
+
+    // Initialize the page with the home section
+    document.addEventListener('DOMContentLoaded', () => {
+        // Show home section animations
+        const homeSection = document.getElementById('home');
+        if (homeSection) {
+            triggerAnimations(homeSection);
+        }
+
+        // Show contact section animations (always visible)
+        const contactSection = document.getElementById('contact');
+        if (contactSection) {
+            triggerAnimations(contactSection);
+        }
+
+        // Show CTA section animations (always visible)
+        const ctaSection = document.getElementById('cta');
+        if (ctaSection) {
+            triggerAnimations(ctaSection);
+        }
+    });
+
+    // Form submission handler
+    document.querySelectorAll('form').forEach(form => {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Here you would normally send the form data to a server
+            alert('Thank you for your message! We will contact you soon.');
+            this.reset();
+        });
+    });
+</script>
+</body>
+</html>
